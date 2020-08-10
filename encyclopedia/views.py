@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
-import markdown2
+import random, markdown2
 
 from . import util
 
@@ -19,3 +19,6 @@ def wiki(request, title):
     else:
         return render(request, "encyclopedia/error.html")
 
+def random_page(request):
+    rand = random.choice(util.list_entries())
+    return redirect("encyclopedia:wiki", title=rand)
