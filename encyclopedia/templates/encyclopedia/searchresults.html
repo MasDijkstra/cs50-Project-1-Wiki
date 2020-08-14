@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block body %}
+    <h1>Search Results</h1>
+
+    {% if matches %}
+    <div>Sorry, we couldn't find a page matching "{{ query }}." Did you mean:</div>
+
+    <ul>
+        {% for match in matches %}
+            <li><a href="{% url 'encyclopedia:wiki' match %}">{{ match }}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+    <div>Sorry, we couldn't find a page matching "{{ query }}."</div>
+    {% endif %}
+
+{% endblock %}
