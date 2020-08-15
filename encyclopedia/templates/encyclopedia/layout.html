@@ -9,20 +9,22 @@
         <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
     </head>
     <body>
+        <div class="wrapper">
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
-                <h2><a href="{% url 'encyclopedia:index' %}">Wiki</a></h2>
-                <form action = "{% url 'encyclopedia:search' %}" method="post">
+                <img src="{% static 'encyclopedia/images/logo.png'%}">
+                <h2><a href="{% url 'encyclopedia:index' %}"  id="sidebar_title">CS50 Wiki</a></h2>
+                <form action = "{% url 'encyclopedia:search' %}" method="post" class="search">
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
                     {% csrf_token %}
                 </form>
-                <div>
+                <div class="sidebar_item">
                     <a href="{% url 'encyclopedia:index' %}">Home</a>
                 </div>
-                <div>
+                <div class="sidebar_item">
                     Create New Page
                 </div>
-                <div>
+                <div class="sidebar_item">
                     <a href="{% url 'encyclopedia:random_page' %}">Random Page</a>
                 </div>
                 {% block nav %}
@@ -33,6 +35,6 @@
                 {% endblock %}
             </div>
         </div>
-
+        </div>
     </body>
 </html>
