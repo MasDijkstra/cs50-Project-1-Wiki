@@ -5,12 +5,32 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Create a Page</h1>
+    <h1>Create a New Page</h1>
 
-    <ul>
-        {% for entry in entries %}
-            <li><a href="{% url 'encyclopedia:wiki' entry %}">{{ entry }}</a></li>
-        {% endfor %}
-    </ul>
+    <br>
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endif %}
+
+    <form action = "{% url 'encyclopedia:create' %}" method="post" class="title">
+
+        <h6>Title:</h6>
+        <input type="text" class="title" name="title">
+
+        <br><br>
+
+        <h6>Content:</h6>
+        <textarea class="content" name="content" rows="12" cols="50"></textarea>
+
+        <br><br>
+
+        <input type="submit">
+        {% csrf_token %}
+    </form>
 
 {% endblock %}
