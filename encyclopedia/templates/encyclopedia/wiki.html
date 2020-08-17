@@ -8,6 +8,8 @@
 
     {{ content | safe }}
 
-    <br><input type="button" value="Edit">
+    <br>
+    <a href="{% url 'encyclopedia:index' %}"><input type="button" value="Go Back"></a>
+    <a href="{% url 'encyclopedia:edit' title %}"><input type="button" value="Edit"></a>
 
 {% endblock %}
